@@ -1,13 +1,9 @@
 import React from 'react';
-import './css/App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Navbar from 'react-bootstrap/NavBar'
-import Nav from 'react-bootstrap/Nav'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
-import Navs from './components/Navs';
+import './css/App.css';
+import AstraNavBar from './components/AstraNavBar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import WorkshopsPage from './pages/WorkshopsPage';
@@ -15,13 +11,13 @@ import ProjectsPage from './pages/ProjectsPage';
 import URCPage from './pages/URCPage';
 import AchievementsPage from './pages/AchievementsPage';
 import SponsorsPage from './pages/SponsorsPage';
+import Footer from './components/Footer';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
-      // Add the page url and names to be in the navbar
+      // Add the page url and names to be in the navbar and router
       pages: [
         {
           url:'/',name:'Home',render: () => { 
@@ -50,11 +46,12 @@ class App extends React.Component {
         {
           url:'/sponsors',name:'Sponsors',render: () => { 
             return (<SponsorsPage title='Sponsors'/>) 
-          }}
+        }}
       ]
     }
   }
 
+  // Route all pages defined
   RoutePages() {
     var routes = this.state.pages.map((page) => {
       return (<Route exact path={page.url} render={page.render}/>);
@@ -66,26 +63,10 @@ class App extends React.Component {
     return (
       <Router>
         <Container fluid={true}>
-
-          <Row>
-            <Col>
-              <Navbar className='border-bottom'>
-                <Navbar.Brand>
-                    <Link className='navbar-brand' to='/'>Astra Robotics</Link>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className='nav-bar justify-content-end'>
-                  <Nav>
-                    <Navs pages={this.state.pages}></Navs>
-                  </Nav>  
-                </Navbar.Collapse>
-              </Navbar>
-            </Col>
-          </Row>
-          
+          <AstraNavBar pages={this.state.pages}/>
           {this.RoutePages()}
-
-        </Container>
+          <Footer/>
+        </Container>     
       </Router>  
     );  
   };
