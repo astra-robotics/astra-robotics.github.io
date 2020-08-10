@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 function URCPage(props) {
     document.title = 'Astra Robotics | ' + props.title;
     return (
-        <Container>
+        <Container id='urcPage' className='page'>
             <Row>
                 <Col>
                     <h1>{props.title} page works!</h1>

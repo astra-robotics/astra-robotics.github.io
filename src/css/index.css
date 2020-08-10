@@ -1,3 +1,33 @@
 body {
-    background-color: black;
+    background-color: #000000;
+    color: #eeeeee;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.navbar.astra{
+    font-family: 'Bebas Neue', cursive;
+    background-color: #111111ee;
+    color: #eeeeee;
+}
+.navbar-brand-astra{
+    font-size: 32px;
+    color: #eeeeee;
+}
+.navbar-brand-astra:hover{
+    color: #aaaaaa;
+}
+.navbar-light .navbar-nav .nav-link{
+    font-size: 24px;
+    color: #eeeeee;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #eeeeee;
+    text-shadow: 0px 2px 1px #00b4e1; 
+}
+.page {
+    padding-top: 100px;
+}
+.card{
+    background-color: #4ecca3;
+    color: #eeeeee;
 }

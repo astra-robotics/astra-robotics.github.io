@@ -6,6 +6,7 @@ import './css/App.css';
 import AstraNavBar from './components/AstraNavBar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import WorkshopsPage from './pages/WorkshopsPage';
 import ProjectsPage from './pages/ProjectsPage';
 import URCPage from './pages/URCPage';
@@ -26,6 +27,10 @@ class App extends React.Component {
         {
           url:'/about',name:'About Us',render: () => { 
           return (<AboutPage title='About Us'/>) 
+        }},
+        {
+          url:'/contact',name:'Contact',isonlylink: true,render: () => { 
+            return (<ContactPage title='Contact'/>) 
         }},
         {
           url:'/workshops',name:'Workshops',render: () => { 
@@ -62,7 +67,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Container fluid={true}>
+        <Container fluid={true} id="mainContainer">
           <AstraNavBar pages={this.state.pages}/>
           {this.RoutePages()}
           <Footer/>
