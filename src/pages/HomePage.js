@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-//import Articles from '../components/Articles'
+import Articles from '../components/Articles'
 import PageImage from '../components/PageImage'
 
 class HomePage extends React.Component {
@@ -40,6 +40,11 @@ class HomePage extends React.Component {
                 <Row>
                     <Col className='p-0'>
                         <PageImage title={this.state.title}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+        {/*<Articles articles={this.state.articles}/>*/}
                     </Col>
                 </Row>
             </Container>

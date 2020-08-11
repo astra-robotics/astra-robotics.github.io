@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class ContactPage extends Component {
     constructor(props) {
         super(props);    
-        this.state = { 
+        this.state = {
+            title: props.title, 
             handles: [
                 {   
                     field: 'Address',
@@ -123,10 +124,13 @@ class ContactPage extends Component {
         );
     }
 
+    componentDidMount() {
+        document.title = 'Astra Robotics | '+this.state.title;
+    }
+
     render() { 
         return ( 
             <Container id="contactPage" className='page'>
-                <br/>
                 <Row className='justify-content-md-center'>
                     <Col>
                         <h3 className='heading-3 bold border-bottom'>GET IN TOUCH</h3>
@@ -141,6 +145,7 @@ class ContactPage extends Component {
                     </Col>
                 </Row>
                 <Row>
+                    {/*
                     <Col sm={5}>
                         <Form>
                             <Form.Group controlId='name'>
@@ -158,8 +163,10 @@ class ContactPage extends Component {
                             <Button variant="primary" type="submit">Send Message</Button>
                         </Form>
                     </Col>
+                    
                     <Col sm={1}></Col>
-                    <Col sm={6}>
+                    */}
+                    <Col sm={16}>
                         {this.MakeHandles()}
                     </Col>
                 </Row>

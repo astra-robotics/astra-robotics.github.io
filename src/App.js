@@ -15,9 +15,8 @@ import SponsorsPage from './pages/SponsorsPage';
 import Footer from './components/Footer';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+
+    state = {
       // Add the page url and names to be in the navbar and router
       pages: [
         {
@@ -27,10 +26,6 @@ class App extends React.Component {
         {
           url:'/about',name:'About Us',render: () => { 
           return (<AboutPage title='About Us'/>) 
-        }},
-        {
-          url:'/contact',name:'Contact',isonlylink: true,render: () => { 
-            return (<ContactPage title='Contact'/>) 
         }},
         {
           url:'/workshops',name:'Workshops',render: () => { 
@@ -51,11 +46,13 @@ class App extends React.Component {
         {
           url:'/sponsors',name:'Sponsors',render: () => { 
             return (<SponsorsPage title='Sponsors'/>) 
+        }},
+        {
+          url:'/contact',name:'Contact',render: () => { 
+            return (<ContactPage title='Contact Us'/>) 
         }}
       ]
     }
-  }
-
   // Route all pages defined
   RoutePages() {
     var routes = this.state.pages.map((page) => {

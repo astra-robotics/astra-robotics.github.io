@@ -14,18 +14,16 @@ class PageImage extends Component {
             title : props.title
         }
     }
-    /*
     componentDidMount() {
-        window.onscroll = this.handleScroll;
-        document.getElementById('astra-navbar').style.backgroundColor = ""
+       console.log(process.env.PUBLIC_URL)
     }
 
-    handleScroll = function(){
-        var pageImage = document.getElementById('pageImage')
-        var navbar = document.getElementById('astra-navbar')
-        navbar.style.backgroundColor = (document.documentElement.scrollTop >= pageImage.scrollHeight - navbar.scrollHeight)?"#ffffff":""
-    }
-    */
+    // handleScroll = function(){
+    //     var pageImage = document.getElementById('pageImage')
+    //     var navbar = document.getElementById('astra-navbar')
+    //     navbar.style.backgroundColor = (document.documentElement.scrollTop >= pageImage.scrollHeight - navbar.scrollHeight)?"#ffffff":""
+    // }
+    
     getElement(props) {
         var element = this.state.images.map((image) => {
             if (image.name === this.state.title)
@@ -38,7 +36,7 @@ class PageImage extends Component {
     
     render() { 
         return ( 
-            <div id='pageImage' style={{textAlignLast: "center"}}>{this.getElement()}</div>
+            <div id='pageImage' className='pageImage'>{this.getElement()}</div>
         );
     }
 }

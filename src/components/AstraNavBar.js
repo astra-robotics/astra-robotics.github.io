@@ -10,7 +10,9 @@ class AstraNavBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            pages: props.pages
+            pages: props.pages,
+            scrollPosition: 0,
+            top: "0"
         }
     }
 
@@ -25,15 +27,30 @@ class AstraNavBar extends React.Component {
         return navs;
     }
 
-    // TODO: Scroll up to show navbar setting
+    componentDidMount() {
+        window.onscroll = this.setNavbar;
+    }
+
+    setNavbar = () => {
+        var current = window.scrollY;
+        if(current >= this.state.scrollPosition) {
+            this.setState({scrollPosition:current, top:"-100px"})
+        }
+        else{
+            this.setState({scrollPosition:current,top:"0"})
+        }
+    }
+    
     render() {
         return (  
             <Container className='p-0' fluid={true}>
                 <Row>
                     <Col className='p-0'>
-                        <Navbar id='astra-navbar' className='astra' expand='lg' fixed='top'>
+                        <Navbar id='astra-navbar' style={{top: this.state.top}} className='astra' expand='lg' fixed='top'>
                             <Navbar.Brand>
-                                <Nav.Link className='navbar-brand-astra' href='/'>Astra Robotics</Nav.Link>
+                                <Nav.Link className='navbar-brand-astra' href='/'>
+                                    Astra Robotics  
+                                </Nav.Link>
                             </Navbar.Brand>
                             <Navbar.Toggle aria-controls="navbar-toggle" className='navbar-dark'/>
                             <Navbar.Collapse className='nav-bar justify-content-end'>

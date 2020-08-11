@@ -8,17 +8,17 @@ import Card from 'react-bootstrap/Card'
 function makeArticle(articles) {
     var article = articles.map((article) =>{
         return (
-            <Container>
-                <Row>
-                    <Col>
-                        <br/>
-                        <Card style={{ width: '64rem' }}>
-                            <Card.Title>{article.heading}</Card.Title>
-                            <Card.Text style={{fontSize:"18px"}}>{article.body}</Card.Text>
-                        </Card>    
-                    </Col>
-                </Row>
-            </Container>
+            <Card>
+                {/*
+                <Card.Img src={process.env.PUBLIC_URL + '/assets/images/AstraLogoGlitch.png'} alt='Astra logo' style={{opacity:"0.05"}}/>
+                <Card.ImgOverlay>
+                    <Card.Title>{article.heading}</Card.Title>
+                    <Card.Text>{article.body}</Card.Text>
+                </Card.ImgOverlay>
+                */}
+                <Card.Title>{article.heading}</Card.Title>
+                <Card.Text>{article.body}</Card.Text>
+            </Card>
         )
     })
     return article
@@ -33,7 +33,9 @@ class Articles extends Component {
     }
     render() { 
         return ( 
-            makeArticle(this.state.articles)
+            <Container className='articles'>
+                {makeArticle(this.state.articles)}
+            </Container>
         );
     }
 }
