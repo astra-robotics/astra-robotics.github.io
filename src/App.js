@@ -36,7 +36,14 @@ class App extends React.Component {
             return (<ProjectsPage title='Projects'/>) 
         }},
         {
-          url:'/urc',name:'URC 2019',render: () => {
+          url:'/rovers',name:'Our rovers',
+          isdropdown: true,
+          dropdown: [
+            {name: 'URC 2019', url: '/rovers#urc2019'},
+            {name: 'IRC 2020', url: '/rovers#irc2020'},
+            {name: 'IRDC 2020', url: '/rovers#irdc2020'}
+          ],
+          render: () => {
             return (<URCPage title='URC 2019'/>) 
         }},
         {

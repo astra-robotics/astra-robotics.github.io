@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/NavBar'
 import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -20,7 +21,21 @@ class AstraNavBar extends React.Component {
     MakeNavs(pages) {
         var navs = pages.map((page) => {
             if(!page.isonlylink)
-                return (<Nav.Link className='navbar-brand-astra' href={page.url}>{page.name}</Nav.Link>);
+                if(page.isdropdown) {
+                    return(
+                        <NavDropdown title={page.name} split>
+                        {
+                            page.dropdown.map((dropdown) => {
+                                return(
+                                    <NavDropdown.Item href={dropdown.url}>{dropdown.name}</NavDropdown.Item>
+                                )
+                            })    
+                        }         
+                        </NavDropdown>
+                    )    
+                }
+                else
+                    return (<Nav.Link className='navbar-brand-astra' href={page.url}>{page.name}</Nav.Link>);
             else
                 return (<React.Fragment/>)        
         });

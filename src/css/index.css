@@ -42,6 +42,7 @@ body {
 }
 .page {
     padding-top: 100px;
+    text-align: center;
 }
 .card{
     background-color: #000000;
@@ -56,4 +57,17 @@ body {
 .pageImage{
     text-align-last: center;
     place-content: center;
+}
+.accordion{
+    margin-left: auto;
+    margin-right: auto;
+}
+img.memberImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+.card.memberCard {
+    background-color: #222222;
+    color: #eeeeee;
 }

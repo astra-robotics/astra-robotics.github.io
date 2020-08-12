@@ -47,33 +47,19 @@ class SubsystemTable extends React.Component {
         }    
     }
 
-    fetchCsv() {
-        return fetch(this.props.csvfile).then(function (response) {
-            let reader = response.body.getReader();
-            let decoder = new TextDecoder('utf-8');
-
-            return reader.read().then(function (result) {
-                return decoder.decode(result.value);
-            });
-        });
-    }
-
     getData(result) {
         this.setState({data: result.data});
-        console.log('subsystem', result.data)
     }
 
-    async getCsvData() {
-        let csvData = await this.fetchCsv();
-
-        Papa.parse(csvData, {
+    getCsvData() {
+        Papa.parse(this.props.csvfile, {
+            download: true,
             complete: this.getData
         });
     }
 
     componentDidMount() {
         this.getCsvData();
-        console.log(this.state.data)
     }
     
     render() {  

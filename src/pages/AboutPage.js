@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Papa from 'papaparse';
 
 import SubsystemTable from '../components/SubsystemTable'
 
@@ -22,9 +21,9 @@ class AboutPage extends React.Component {
                             name:"Naman A Menezes", 
                             positions: ["Team lead", "Subsystem head - Brain"],
                             imgRender: () => {
-                                return(<img src="https://cdn.discordapp.com/attachments/714323592703246420/742707129491914795/unknown.png"
-                                    alt="char1"
-                                    style={{width:"86px"}}/>
+                                return(<img className='memberImage'
+                                    src="https://cdn.discordapp.com/attachments/714323592703246420/742707129491914795/unknown.png"
+                                    alt="char1"/>
                             )}
                         }
                     ],
@@ -37,9 +36,9 @@ class AboutPage extends React.Component {
                             name:"Ambu Karthik", 
                             positions: ["Subsystem head - Autonomous"],
                             imgRender: () => {
-                                return(<img src="https://cdn.discordapp.com/attachments/714323592703246420/742707213876854938/unknown.png"
-                                    alt="char2"
-                                    style={{width:"86px"}}/>
+                                return(<img className='memberImage'
+                                    src="https://cdn.discordapp.com/attachments/714323592703246420/742707213876854938/unknown.png"
+                                    alt="char2"/>
                             )}
                         }
                     ],
@@ -53,33 +52,39 @@ class AboutPage extends React.Component {
     makeAccordions() {
         var accordions = this.state.details.map((detail) => {
             return(
-                <Accordion style={{ width: "32rem" }} defaultActiveKey="0">
-                    <Accordion.Toggle as={Button} eventKey="0">
-                    {detail.subsystem}
-                    </Accordion.Toggle>
-                    <Accordion.Collapse eventKey="0">
-                        <Card>
-                            {
-                                detail.heads.map((head)  => {
-                                    return(
-                                        <>
-                                            <h5>{head.name}</h5>
-                                            {
-                                                head.positions.map((position) => {
-                                                    return(
-                                                        <h5>{position}</h5>
-                                                    )
-                                                })
-                                            }
-                                            {head.imgRender()}
-                                        </>
-                                    )
-                                })
-                            }
-                            <SubsystemTable csvfile={detail.membersCSV}/>
-                        </Card>
-                    </Accordion.Collapse>
-                </Accordion>
+                <div>
+                    <Accordion style={{ width: "32rem" }}>
+                        <Accordion.Toggle as={Button} eventKey="0">
+                        {detail.subsystem}
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <div>   
+                                <Card className='memberCard'>
+                                    {
+                                        detail.heads.map((head)  => {
+                                            return(
+                                                <>
+                                                    <h5>{head.name}</h5>
+                                                    {
+                                                        head.positions.map((position) => {
+                                                            return(
+                                                                <h5>{position}</h5>
+                                                            )
+                                                        })
+                                                    }
+                                                    {head.imgRender()}
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </Card>
+                                <br/>
+                                <SubsystemTable csvfile={detail.membersCSV}/>
+                            </div>
+                        </Accordion.Collapse>
+                    </Accordion>
+                    <br/>
+                </div>    
             )    
         })
         return accordions
