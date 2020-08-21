@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+
 // Build the header navigation bar
 class AstraNavBar extends React.Component {
     constructor(props) {
@@ -41,33 +42,19 @@ class AstraNavBar extends React.Component {
         });
         return navs;
     }
-
-    componentDidMount() {
-        window.onscroll = this.setNavbar;
-    }
-
-    setNavbar = () => {
-        var current = window.scrollY;
-        if(current >= this.state.scrollPosition) {
-            this.setState({scrollPosition:current, top:"-100px"})
-        }
-        else{
-            this.setState({scrollPosition:current,top:"0"})
-        }
-    }
     
     render() {
         return (  
-            <Container className='p-0' fluid={true}>
+            <Container fluid={true}>
                 <Row>
-                    <Col className='p-0'>
-                        <Navbar id='astra-navbar' style={{top: this.state.top}} className='astra' expand='lg' fixed='top'>
+                    <Col>
+                        <Navbar id='astra-navbar' style={{top: this.state.top}} className='astra' expand='lg' fixed="top">
+                            <Navbar.Toggle aria-controls="navbar-toggle" className='navbar-dark'/>
                             <Navbar.Brand>
                                 <Nav.Link className='navbar-brand-astra' href='/'>
                                     Astra Robotics  
                                 </Nav.Link>
                             </Navbar.Brand>
-                            <Navbar.Toggle aria-controls="navbar-toggle" className='navbar-dark'/>
                             <Navbar.Collapse className='nav-bar justify-content-end'>
                             <Nav>
                                 {this.MakeNavs(this.state.pages)}

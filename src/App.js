@@ -12,7 +12,6 @@ import ProjectsPage from './pages/ProjectsPage';
 import URCPage from './pages/URCPage';
 import AchievementsPage from './pages/AchievementsPage';
 import SponsorsPage from './pages/SponsorsPage';
-import Footer from './components/Footer';
 
 class App extends React.Component {
 
@@ -37,14 +36,14 @@ class App extends React.Component {
         }},
         {
           url:'/rovers',name:'Our rovers',
-          isdropdown: true,
-          dropdown: [
-            {name: 'URC 2019', url: '/rovers#urc2019'},
-            {name: 'IRC 2020', url: '/rovers#irc2020'},
-            {name: 'IRDC 2020', url: '/rovers#irdc2020'}
-          ],
+          // isdropdown: true,
+          // dropdown: [
+          //   {name: 'URC 2019', url: '/rovers#urc2019'},
+          //   {name: 'IRC 2020', url: '/rovers#irc2020'},
+          //   {name: 'IRDC 2020', url: '/rovers#irdc2020'}
+          // ],
           render: () => {
-            return (<URCPage title='URC 2019'/>) 
+            return (<URCPage title='Our rovers'/>) 
         }},
         {
           url:'/achievements',name:'Achievements',render: () => {
@@ -54,12 +53,13 @@ class App extends React.Component {
           url:'/sponsors',name:'Sponsors',render: () => { 
             return (<SponsorsPage title='Sponsors'/>) 
         }},
-        {
-          url:'/contact',name:'Contact',render: () => { 
-            return (<ContactPage title='Contact Us'/>) 
-        }}
+        // {
+        //   url:'/contact',name:'Contact us',render: () => { 
+        //     return (<ContactPage title='Contact Us'/>) 
+        // }}
       ]
     }
+
   // Route all pages defined
   RoutePages() {
     var routes = this.state.pages.map((page) => {
@@ -68,13 +68,13 @@ class App extends React.Component {
     return routes;
   }
 
+  // Render main app with routes and a container
   render() {
     return (
       <Router>
         <Container fluid={true} id="mainContainer">
           <AstraNavBar pages={this.state.pages}/>
           {this.RoutePages()}
-          <Footer/>
         </Container>     
       </Router>  
     );  

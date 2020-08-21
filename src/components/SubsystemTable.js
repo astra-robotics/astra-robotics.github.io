@@ -36,7 +36,7 @@ class SubsystemTable extends React.Component {
     
     getRowsData = (data) => {
         if(data !== undefined) {
-            var temp = data.shift();
+            data.shift();
             var items = data
             return items.map((row)=>{
                 return <tr><RenderRow items={row}/></tr>
@@ -64,7 +64,7 @@ class SubsystemTable extends React.Component {
     
     render() {  
         return (
-            <Table striped bordered hover variant="dark">
+            <Table bordered hover variant="dark" className="table-responsive" style={this.props.style}>
                 <thead>
                     <tr>
                         {this.getHeader(this.state.data)}

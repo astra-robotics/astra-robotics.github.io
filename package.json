@@ -2,6 +2,7 @@
   "name": "astra-robotics.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://astra-robotics.github.io/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
@@ -10,7 +11,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@tippyjs/react": "^4.1.0",
     "bootstrap": "^4.5.1",
+    "flare-react": "^1.0.7",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "papaparse": "^5.2.0",
@@ -20,10 +23,14 @@
     "react-dom": "^16.13.1",
     "react-loading-skeleton": "^2.1.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "react-spring": "^8.0.27"
+    "react-scripts": "^3.4.3",
+    "react-spring": "^8.0.27",
+    "react-table": "^6.8.2",
+    "tippy.js": "^6.2.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

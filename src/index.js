@@ -10,7 +10,6 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 library.add(fab);
 
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
