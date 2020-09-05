@@ -37,11 +37,13 @@ class HomePage extends React.Component {
     componentDidMount() {
         document.title = 'Astra Robotics | ' + this.state.title;
         document.getElementById("astra-navbar").style.background = "#00000000";
+        document.getElementById("Footer").style.visibility = "hidden";
         window.onresize = this.setWindowDims;
     }
 
     componentDidUnmount() {
         document.getElementById("astra-navbar").style.background = "#000000";
+        document.getElementById("Footer").style.visibility = "visible";
     }
 
     setWindowDims = () => {
@@ -82,6 +84,20 @@ class HomePage extends React.Component {
             return (percentage/100)*width + 'px';
     }
 
+    adjustLogo(percentage) {
+        var width = this.state.windowDims.width;
+        if(width<=600)
+            return((percentage+20)/100)*width + 'px';
+        else if(width<=900)
+            return ((percentage+15)/100)*width + 'px';
+        else if(width<=1200)
+            return ((percentage+10)/100)*width + 'px';
+        else if(width<=1500)
+            return ((percentage+5)/100)*width + 'px';    
+        else
+            return (percentage/100)*width + 'px';   
+    }
+
     render() {
         return (
             <Parallax className='parallax' ref={ref => (this.parallax = ref)} pages={3}>
@@ -95,7 +111,7 @@ class HomePage extends React.Component {
                 speed={0.1}
                 onClick={() => this.parallax.scrollTo(1)}
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1}}>   
-                <img src={process.env.PUBLIC_URL + '/assets/images/astra_logo.svg'} style={{ width: this.adjustSize(30) }} alt="Astra logo"/>
+                <img src={process.env.PUBLIC_URL + '/assets/images/astra_logo.svg'} style={{ width: this.adjustLogo(30) }} alt="Astra logo"/>
                 </ParallaxLayer>
 
                 <ParallaxLayer offset={1.15} speed={0.5} style={{zIndex: 100}}>

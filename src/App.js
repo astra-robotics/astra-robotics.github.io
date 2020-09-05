@@ -12,6 +12,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import URCPage from './pages/URCPage';
 import AchievementsPage from './pages/AchievementsPage';
 import SponsorsPage from './pages/SponsorsPage';
+import Footer from './components/Footer';
 
 class App extends React.Component {
 
@@ -19,7 +20,7 @@ class App extends React.Component {
       // Add the page url and names to be in the navbar and router
       pages: [
         {
-          url:'/',name:'Home',render: () => { 
+          url:'/',name:'Home',isExact: true,render: () => { 
           return (<HomePage title='Home'/>) 
         }},
         {
@@ -53,17 +54,21 @@ class App extends React.Component {
           url:'/sponsors',name:'Sponsors',render: () => { 
             return (<SponsorsPage title='Sponsors'/>) 
         }},
-        // {
-        //   url:'/contact',name:'Contact us',render: () => { 
-        //     return (<ContactPage title='Contact Us'/>) 
-        // }}
+        {
+          url:'/contact',name:'Contact us',isonlylink:true, render: () => { 
+            return (<ContactPage title='Contact Us'/>) 
+        }}
       ]
     }
 
   // Route all pages defined
   RoutePages() {
     var routes = this.state.pages.map((page) => {
-      return (<Route exact path={page.url} render={page.render}/>);
+      if(page.isExact)
+        return (<Route exact path={page.url} render={page.render}/>);
+      else {
+        return (<Route path={page.url} render={page.render}/>);
+      }    
     })
     return routes;
   }
@@ -71,10 +76,13 @@ class App extends React.Component {
   // Render main app with routes and a container
   render() {
     return (
-      <Router>
+      <Router basename='/'>
         <Container fluid={true} id="mainContainer">
           <AstraNavBar pages={this.state.pages}/>
           {this.RoutePages()}
+          <footer className="footer sticky-bottom">
+            <Footer/>
+          </footer>
         </Container>     
       </Router>  
     );  
